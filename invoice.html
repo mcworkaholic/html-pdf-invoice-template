@@ -1,4 +1,21 @@
-<div class="page-container">
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+  <meta charset="utf-8">
+  <title>Invoice Template</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="./web/modern-normalize.css">
+  <link rel="stylesheet" href="./web/web-base.css">
+  <link rel="stylesheet" href="./invoice.css">
+  <script type="text/javascript" src="./web/scripts.js"></script>
+</head>
+<body>
+
+<div class="web-container">
+
+  <div class="page-container">
   Page
   <span class="page"></span>
   of
@@ -11,6 +28,21 @@
     src="https://app.useanvil.com/img/email-logo-black.png"
   >
 </div>
+<div class="topcorner-date">
+  <table class="invoice-info-container">
+  <tr>
+    <td>
+      Receipt No: <strong>12345</strong>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Receipt Date: <strong>May 24th, 2024</strong>
+    </td>
+  </tr>
+</table>
+</div>
+
 
 <table class="invoice-info-container">
   <tr>
@@ -18,17 +50,25 @@
       Client Name
     </td>
     <td>
+      VIN: <strong>JHMFA16586S014014</strong>
+    </td>
+    <td>
       Anvil Co
     </td>
   </tr>
   <tr>
+  <td>
+      Make/Model: <strong>Honda Civic</strong>
+    </td>
     <td>
       123 Main Street
     </td>
   </tr>
-  <tr>
     <td>
-      Invoice Date: <strong>May 24th, 2024</strong>
+      Street Address 
+    </td>
+    <td>
+      Year: <strong>2006</strong>
     </td>
     <td>
       San Francisco CA, 94103
@@ -36,7 +76,10 @@
   </tr>
   <tr>
     <td>
-      Invoice No: <strong>12345</strong>
+      City, ST Zip Code
+    </td>
+    <td>
+      Mileage: <strong>176,543</strong>
     </td>
     <td>
       hello@useanvil.com
@@ -44,38 +87,67 @@
   </tr>
 </table>
 
-
 <table class="line-items-container">
   <thead>
     <tr>
-      <th class="heading-quantity">Qty</th>
-      <th class="heading-description">Description</th>
-      <th class="heading-price">Price</th>
+      <th class="heading-quantity">Service</th>
+      <th class="heading-description">Note</th>
+      <th class="heading-price">Hours</th>
       <th class="heading-subtotal">Subtotal</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>2</td>
-      <td>Blue large widgets</td>
-      <td class="right">$15.00</td>
-      <td class="bold">$30.00</td>
+      <td class="left">Oil Change</td>
+      <td class ="middle">Sludgy Oil</td>
+      <td class="right bold">.5</td>
+      <td class="bold">30.00</td>
     </tr>
     <tr>
-      <td>4</td>
-      <td>Green medium widgets</td>
-      <td class="right">$10.00</td>
+      <td class="left">Windshield Wipers</td>
+      <td class = "middle">Green medium widgets</td>
+      <td class="right bold">.1</td>
       <td class="bold">$40.00</td>
     </tr>
     <tr>
-      <td>5</td>
-      <td>Red small widgets with logo</td>
-      <td class="right">$7.00</td>
+      <td class="left">Top-off</td>
+      <td class = "middle">Red small widgets with logo</td>
+      <td class="right bold">.1</td>
       <td class="bold">$35.00</td>
     </tr>
   </tbody>
 </table>
 
+<table class="line-items-container">
+  <thead>
+    <tr>
+      <th>Quantity</th>
+      <th class="heading-description">Part Name/Detail</th>
+      <th class="heading-price">Unit Amount</th>
+      <th class="heading-subtotal">Subtotal</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="left">1</td>
+      <td class ="middle">5w-30 Full Synthetic</td>
+      <td class="right">$15.00</td>
+      <td class="bold">$30.00</td>
+    </tr>
+    <tr>
+      <td class="left">2</td>
+      <td class = "middle">Windshield Wipers</td>
+      <td class="right">$10.00</td>
+      <td class="bold">$40.00</td>
+    </tr>
+    <tr>
+      <td class="left">4</td>
+      <td class = "middle">Red small widgets with logo</td>
+      <td class="right">$7.00</td>
+      <td class="bold">$35.00</td>
+    </tr>
+  </tbody>
+</table>
 
 <table class="line-items-container has-bottom-border">
   <thead>
@@ -89,14 +161,14 @@
     <tr>
       <td class="payment-info">
         <div>
-          Account No: <strong>123567744</strong>
+          Card No: <strong>**** **** **** 1234</strong>
         </div>
         <div>
           Routing No: <strong>120000547</strong>
         </div>
       </td>
       <td class="large">May 30th, 2024</td>
-      <td class="large total">$105.00</td>
+      <td class="large total">$0.00</td>
     </tr>
   </tbody>
 </table>
@@ -104,7 +176,7 @@
 <div class="footer">
   <div class="footer-info">
     <span>hello@useanvil.com</span> |
-    <span>555 444 6666</span> |
+    <span>555-444-6666</span> |
     <span>useanvil.com</span>
   </div>
   <div class="footer-thanks">
@@ -112,3 +184,16 @@
     <span>Thank you!</span>
   </div>
 </div>
+
+
+</div>
+
+<script type="text/javascript">
+  load(document.querySelector('.web-container'), './invoice.html');
+</script>
+
+</body></html>
+
+
+
+
