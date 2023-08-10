@@ -1,0 +1,78 @@
+-- Use the database
+-- You may need to specify your database filename or path if you're not using an SQLite tool or API.
+-- For example: sqlite3 mydatabase.db
+
+-- Main Client Information Table
+CREATE TABLE Clients (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    firstName TEXT NOT NULL,
+    middleInitial TEXT,
+    lastName TEXT NOT NULL,
+    streetAddress TEXT NOT NULL,
+    cityStateZip TEXT NOT NULL,
+    phoneNumber TEXT NOT NULL,
+    emailAddress TEXT NOT NULL,
+    balance REAL,
+    preferredContactMethod TEXT NOT NULL,
+    companyName TEXT,
+    jobTitle TEXT,
+    optInMarketing INTEGER NOT NULL -- 0 for false, 1 for true
+);
+
+-- Social Media Handles Table
+CREATE TABLE SocialMediaHandles (
+    clientId INTEGER NOT NULL,
+    platform TEXT NOT NULL,  -- This can be 'facebook', 'instagram', etc.
+    inUse INTEGER,  -- 0 for false, 1 for true
+    username TEXT,
+    PRIMARY KEY (clientId, platform),
+    FOREIGN KEY (clientId) REFERENCES Clients(id)
+);
+
+-- Payment Handles Table
+CREATE TABLE PaymentHandles (
+    clientId INTEGER NOT NULL,
+    platform TEXT NOT NULL,  -- This can be 'cashapp', 'venmo', etc.
+    inUse INTEGER,  -- 0 for false, 1 for true
+    username TEXT,
+    PRIMARY KEY (clientId, platform),
+    FOREIGN KEY (clientId) REFERENCES Clients(id)
+);
+
+-- Services Rendered Table
+CREATE TABLE ServicesRendered (
+    serviceId INTEGER PRIMARY KEY AUTOINCREMENT,
+    clientId INTEGER NOT NULL,
+    invoiceId INTEGER,
+    serviceType TEXT NOT NULL, -- e.g., 'driveway clearing', 'sidewalk clearing', 'salting'
+    serviceArea TEXT, -- e.g., 'large driveway', 'small driveway', 'sq feet'
+    equipmentUsed TEXT, 
+    scheduledDate DATE,
+    completionDate DATE,
+    notes TEXT,
+    FOREIGN KEY (clientId) REFERENCES Clients(id),
+    FOREIGN KEY (invoiceId) REFERENCES Invoices(invoiceId)
+);
+
+-- Contracts Table
+CREATE TABLE Contracts (
+    contractId INTEGER PRIMARY KEY AUTOINCREMENT,
+    clientId INTEGER NOT NULL,
+    signedDate DATE NOT NULL,
+    startDate DATE NOT NULL,
+    endDate DATE,
+    contractPath TEXT NOT NULL,
+    terms TEXT,  -- Optional column for any special terms or conditions, or a brief description
+    FOREIGN KEY (clientId) REFERENCES Clients(id)
+);
+
+-- Invoices Table
+CREATE TABLE Invoices (
+    invoiceId INTEGER PRIMARY KEY AUTOINCREMENT,
+    clientId INTEGER NOT NULL,
+    startDate DATE,
+    endDate DATE,
+    pdfPath TEXT NOT NULL,
+    totalCharge REAL,
+    FOREIGN KEY (clientId) REFERENCES Clients(id)
+);

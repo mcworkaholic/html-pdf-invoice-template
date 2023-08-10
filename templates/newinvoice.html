@@ -1,0 +1,237 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+  <meta charset="utf-8">
+  <title>Invoice Template</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/modern-normalize.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/web-base.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/invoice.css') }}">
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <!--------PAYMENT-MODAL-------------->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalLabel">Payment Reminder</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id="modal-body">
+        <!-- Content will be added here by the script -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary" id="proceed-button">Proceed</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--------------END-MODAL----------->
+
+<div class="web-container" id = "fullPage">
+  <div class="page-container">
+  Page
+  <span class="page"></span>
+  of
+  <span class="pages"></span>
+</div>
+
+<div>
+  <table class="invoice-info-container">
+    <tr>
+      <td>
+        For Service Date(s): <strong>May 24th, 2024</strong>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Client ID: <strong>000000</strong>
+      </td>
+    </tr>
+  <tr>
+    <td>
+      Invoice #: <strong>000000</strong>
+    </td>
+  </tr>
+</table>
+</div>
+
+<div class="logo-container">
+  <img
+    style="height: 18px"
+    src="https://app.useanvil.com/img/email-logo-black.png"
+  >
+</div>
+
+<table class="invoice-info-container">
+  <tr>
+    <td rowspan="2" class="clientInfo bold" id="client-name">
+      Client Name
+    </td>
+    <td class="companyInfo bold" id="companyName">
+      Anvil Co
+    </td>
+  </tr>
+  <tr>
+    <td class="companyInfo" id="companyStreetAddress">
+      123 Main Street
+    </td>
+  </tr>
+    <td  class="clientInfo" id="clientStreetAddress">
+      Street Address 
+    </td>
+    <td class="companyInfo" id="companyCityStateZip">
+      San Francisco CA, 94103
+    </td>
+  </tr>
+  <tr>
+    <td class="clientInfo" id="clientCityStateZip">
+      City, ST Zip Code
+    </td>
+    <td class="companyInfo">
+      <a href="#" id="companyEmail">hello@useanvil.com</a>
+  </td>
+  </tr>
+  <tr>
+    <td  class="clientInfo" id="clientPhoneNumber">
+      Client Phone
+    </td>
+    <td class="companyInfo" id="companyPhoneNumber">
+      Company Phone
+    </td>
+  </tr>
+</table>
+
+<!--------------SERVICES-------------->
+<table class="line-items-container" id="services">
+  <thead>
+    <tr>
+      <th class="heading-quantity">Service</th>
+      <th class="heading-description">Note</th>
+      <th class="heading-price">Hours</th>
+      <th class="heading-subtotal">Subtotal</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="left">Oil Change</td>
+      <td class ="middle">Sludgy Oil</td>
+      <td class="right bold">.5</td>
+      <td class="bold subtotal-item">30.00</td>
+    </tr>
+    <tr>
+      <td class="left">Windshield Wipers</td>
+      <td class = "middle">Green medium widgets</td>
+      <td class="right bold">.1</td>
+      <td class="bold subtotal-item">40.00</td>
+    </tr>
+    <tr>
+      <td class="left">Top-off</td>
+      <td class = "middle">Red small widgets with logo</td>
+      <td class="right bold">.1</td>
+      <td class="bold subtotal-item">35.00</td>
+    </tr>
+  </tbody>
+</table>
+<!---------------END-SERVICES--------------->
+
+
+<!--------------MATERIALS-------------->
+<table class="line-items-container" id="materials">
+  <thead>
+    <tr>
+      <th>Quantity</th>
+      <th class="heading-description">Part/Material Detail</th>
+      <th class="heading-price">Unit Amount</th>
+      <th class="heading-subtotal">Subtotal</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="left quantity">1</td>
+      <td class ="middle">Blank</td>
+      <td class=" bold right rate">$15.00</td>
+      <td class="bold subtotal-item">30.00</td>
+    </tr>
+    <tr>
+      <td class="left quantity">2</td>
+      <td class = "middle">Blank</td>
+      <td class="bold right rate">$10.00</td>
+      <td class="bold subtotal-item">40.00</td>
+    </tr>
+    <tr>
+      <td class="left quantity">4</td>
+      <td class = "middle">Blank</td>
+      <td class=" bold right rate">$7.00</td>
+      <td class="bold subtotal-item">35.00</td>
+    </tr>
+  </tbody>
+</table>
+<!--------------END-MATERIALS-------------->
+
+<table class="line-items-container has-bottom-border">
+  <thead>
+    <tr>
+      <th>Payment Info</th>
+      <th>Due By</th>
+      <th>Total Due</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="payment-info">
+        <div>
+          Payment Options: <strong>Check/Cashapp/Venmo/Cash</strong>
+        </div>
+      </td>
+      <td class="large">May 30th, 2024</td>
+      <td class="large total" id="totalCharge">0.00</td>
+    </tr>
+  </tbody>
+</table>
+
+<!----PAYMENT NAVIGATION/DOWNLOAD INVOICE-LOGOS--->
+<table>
+  <tr>
+    <td>
+      <img src="{{ url_for('static', filename='img/cashapptextlogo.png') }}" id="cashappLogo" alt="CashApp Logo and link" width="100" height="49">
+      <img src="{{ url_for('static', filename='img/Venmo-Logo.wine.png') }}"id="venmoLogo" alt="Venmo Logo and link" width="100" height="50">
+    </td>
+    <td>
+      <img src="{{ url_for('static', filename='img/download.png') }}" id="downloadPage" alt="Download Icon" width="20" height="20">
+    </td>
+  </tr>
+</table>
+<!-----------------END-PAYMENTS--NAV--------------->
+
+<!--------------FOOTER-------------->
+<div class="footer">
+  <div class="footer-info">
+    <a href="#" class="companyInfo" id="companyEmail">hello@useanvil.com</a> &nbsp; | &nbsp;
+    <a href="tel:5554446666" class="companyInfo" id="companyPhoneNumber">555-444-6666</a> &nbsp; | &nbsp;
+    <a href="#" class="companyInfo" id="websiteAddress" target="_blank">whoknows.com</a>
+
+  </div>
+  <div class="footer-thanks">
+    <img src="{{ url_for('static', filename='img/heart.png') }}" alt="heart">
+    <span>Thank you!</span>
+  </div>
+</div>
+<!-------------END-FOOTER------------>
+</div>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script src="{{ url_for('static', filename='js/invoice.js') }}"></script>
+</body>
+</html>
+
+
+
+

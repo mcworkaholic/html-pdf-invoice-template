@@ -1,0 +1,51 @@
+{
+  "companyInfo": {
+    "companyCityStateZip": "Princeton MN, 55371",
+    "companyEmail": "weston@etasolutionsmn.com",
+    "companyName": "ETA Solutions",
+    "companyPhoneNumber": "763-607-2197",
+    "companyStreetAddress": "10722 313th Ave N",
+    "logoPath": "",
+    "hourlyRate": "",
+    "websiteAddress": "etasolutionsmn.com",
+    "paymentMethods": {
+      "cashapp": {
+        "feeType": "",
+        "inUse": true,
+        "logoPath": "",
+        "processingFee": "",
+        "username": "mcworkaholic"
+      },
+      "paypal": {
+        "feeType": "",
+        "inUse": false,
+        "logoPath": "",
+        "processingFee": "",
+        "username": null
+      },
+      "venmo": {
+        "feeType": "",
+        "inUse": true,
+        "logoPath": "",
+        "processingFee": "",
+        "username": "mcworkaholic"
+      },
+      "zelle": {
+        "feeType": "",
+        "inUse": false,
+        "logoPath": "",
+        "processingFee": "",
+        "username": null
+      }
+    },
+    "paymentWindow": 10,
+    "photos": {
+      "required": {
+        "before": false,
+        "during": false,
+        "after": false
+      }
+    },
+    "taxRate": ""
+  }
+}

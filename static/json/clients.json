@@ -1,0 +1,156 @@
+{
+    "clientInfo": {
+        "id":  {
+            "_comment1": "This will be autoincremented by the program itself in the client database. Do NOT overwrite this.",
+            "required": false,
+            "startValue": null
+        },
+        "firstName": {
+            "id":"firstName",
+            "required": true,
+            "startValue": "",
+            "inputType": "text"
+        },
+        "middleInitial": {
+            "id":"middleInitial",
+            "required": false,
+            "startValue": "",
+            "inputType": "text"
+        },
+        "lastName": {
+            "id":"lastName",
+            "required": true,
+            "startValue": "",
+            "inputType": "text"
+        },
+        "streetAddress": {
+            "id":"streetAddress",
+            "required": true,
+            "startValue": "",
+            "inputType": "text"
+        },
+        "cityStateZip": {
+            "id":"cityStateZip",
+            "required": true,
+            "startValue": "",
+            "inputType": "text"
+        },
+        "phoneNumber": {
+            "id":"phoneNumber",
+            "required": true,
+            "startValue": "",
+            "inputType": "text"
+        },
+        "emailAddress": {
+            "id":"emailAddress",
+            "required": true,
+            "startValue": "",
+            "inputType": "text"
+        },
+        "preferredContactMethod": {
+            "id":"preferredContactMethod",
+            "required": true,
+            "startValue": "",
+            "inputType": "select",
+            "options": ["Email", "Phone Call", "Text", "Door Knock", "Snail Mail", "Ham Radio", "Loud Yelling"]
+    },
+        "companyName": {
+            "id":"companyName",
+            "required": false,
+            "startValue": "",
+            "inputType": "text"
+        },
+        "jobTitle": {
+            "id":"jobTitle",
+            "required": false,
+            "startValue": "",
+            "inputType": "text"
+        },
+        "socialMediaHandles": {
+            "handles": {
+            "facebook": {
+                "id":"facebook",
+                "required": false,
+                    "inUse": true,
+                    "startValue": "",
+                    "username": "",
+                    "inputType": "text"
+            },
+            "instagram": {
+                "id":"instagram",
+                "required": false,
+                    "inUse": true,
+                    "startValue": "",
+                    "username": "",
+                    "inputType": "text"
+            },
+            "twitter": {
+                "id":"twitter",
+                "required": false,
+                    "inUse": false,
+                    "startValue": "",
+                    "username": "",
+                    "inputType": "text"
+            },
+            "linkedin": {
+                "id":"linkedin",
+                "required": false,
+                    "inUse": false,
+                    "startValue": "",
+                    "username": "",
+                    "inputType": "text"
+            },
+            "snapchat": {
+                "id":"snapchat",
+                "required": false,
+                    "inUse": false,
+                    "startValue": "",
+                    "username": "",
+                    "inputType": "text"
+            }
+            }
+        },
+        "paymentHandles": {
+            "handles": {
+                "cashapp": {
+                    "id":"cashapp",
+                    "required": true,
+                    "inUse": true,
+                    "startValue": "",
+                    "username": "",
+                    "inputType": "text"
+                },
+                "venmo": {
+                    "id":"venmo",
+                    "required": true,
+                    "inUse": true,
+                    "startValue": "",
+                    "username": "",
+                    "inputType": "text"
+                },
+                "paypal": {
+                    "id":"paypal",
+                    "required": false,
+                    "inUse": false,
+                    "startValue": "",
+                    "username": "",
+                    "inputType": "text"
+                },
+                "zelle": {
+                    "id":"zelle",
+                    "required": false,
+                    "inUse": false,
+                    "startValue": "",
+                    "username": "",
+                    "inputType": "text"
+                }
+            }
+        },
+        "optInMarketing": {
+            "id":"optInMarketing",
+            "required": true,
+            "startValue": false,
+            "inputType": "checkbox"
+        }
+    }
+}

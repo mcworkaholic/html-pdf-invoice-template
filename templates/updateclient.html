@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Update Client</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+</head>
+<body>
+    <div class="container">
+    <form action="/updateclient" method="post">
+        <label for="personal" class="header">Personal</label><br><br>
+        <table>
+            <tr>
+              <td>
+                <label for="firstName">First Name:</label>
+              </td>
+              <td>
+                <img src="{{ url_for('static', filename='img/refresh-white.png') }}" id="resetLogo" alt="Reset Form Icon" width="25" height="25" onclick="resetForm()">
+              </td>
+            </tr>
+        </table>
+        <input type="text" id="firstName" name="firstName" required><br>
+        
+        <label for="middleInitial">Middle Initial:</label><br>
+        <input type="text" id="middleInitial" name="middleInitial" required><br>
+
+        <label for="lastName">Last Name:</label><br>
+        <input type="text" id="lastName" name="lastName" required><br>
+
+        <label for="streetAddress">Street Address:</label><br>
+        <input type="text" id="streetAddress" name="streetAddress" required><br>
+
+        <label for="cityStateZip">City, State, and Zip Code:</label><br>
+        <input type="text" id="cityStateZip" name="cityStateZip" required><br>
+
+        <label for="phoneNumber">Phone Number:</label><br>
+        <input type="tel" class="phone-email" id="phoneNumber" name="phoneNumber" required><br>
+
+        <label for="emailAddress">Email Address:</label><br>
+        <input type="email" class="phone-email" id="emailAddress" onblur="validateEmail()" name="emailAddress" required><p id="email_error" style="color: red;"></p>
+        <br>
+
+        <label for="preferredContactMethod">Preferred Contact Method:</label><br>
+        <select id="preferredContactMethod" name="preferredContactMethod" required>
+            <option value="email">Email</option>
+            <option value="calling">Phone Call</option>
+            <option value="texting">Text</option>
+            <option value="knocking">Door Knock</option>
+            <option value="mail">Snail Mail</option>
+            <option value="radio">Ham Radio</option>
+            <option value="yelling">Loud Yelling</option>
+        </select><br>
+
+        <label for="companyName">Company Name:</label><br>
+        <input type="text" id="companyName" name="companyName"><br>
+
+        <label for="jobTitle">Job Title:</label><br>
+        <input type="text" id="jobTitle" name="jobTitle"><br>
+
+       <label for="socials" class="header">Social Media</label><br><br>
+        <label for="facebook">Facebook:</label><br>
+        <input type="text" id="facebook" name="facebook"><br>
+
+        <label for="twitter">Twitter:</label><br>
+        <input type="text" id="twitter" name="twitter"><br>
+
+        <label for="snapchat">Snapchat:</label><br>
+        <input type="text" id="snapchat" name="snapchat"><br>
+
+        <label for="linkedin">LinkedIn:</label><br>
+        <input type="text" id="linkedin" name="linkedin"><br>
+
+        <label for="payments" class="header">Payments</label><br><br>
+
+        <label for="cashapp">CashApp:</label><br>
+        <input type="text" id="cashapp" name="cashapp"><br>
+
+        <label for="venmo">Venmo:</label><br>
+        <input type="text" id="venmo" name="venmo"><br>
+
+        <label for="paypal">PayPal:</label><br>
+        <input type="text" id="paypal" name="paypal"><br>
+
+        <label for="zelle">Zelle:</label><br>
+        <input type="text" id="zelle" name="zelle"><br>
+
+        <label for="optInMarketing">Opt-in Marketing:</label>
+        <input type="checkbox" id="optInMarketing" name="optInMarketing" value="true"><br>
+
+        <input type="submit" value="Update">
+    </form>
+</div>
+<script>
+    const ids = ["firstName", "middleInitial", "lastName"];
+ids.forEach(id => {
+    const input = document.getElementById(id);
+    if (input) {
+        input.addEventListener('keypress', function(e) {
+            if (!/[a-zA-Z.]/.test(String.fromCharCode(e.which))) {
+                e.preventDefault();
+            }
+        });
+    }
+});
+
+function resetForm() {
+        // Select all input fields and textareas, then reset their values
+        document.querySelectorAll('input, textarea, select').forEach(field => {
+            if (field.type === 'checkbox' || field.type === 'radio') {
+                field.checked = false; // Uncheck checkboxes and radios
+            } else if (field.tagName.toLowerCase() === 'select') {
+                field.selectedIndex = 0; // Reset select dropdowns
+            } else {
+                field.value = ''; // Clear text fields, textareas
+            }
+        });
+    }
+
+    // Define your element ids
+let elementIds = ['resetLogo'];
+
+// Function to change cursor to a hand
+function changeCursorToHand() {
+    this.style.cursor = 'pointer';
+}
+
+// Function to change cursor back to default
+function changeCursorToDefault() {
+    this.style.cursor = 'default';
+}
+
+// Loop through each element id, get the element, and add the event listeners
+elementIds.forEach(id => {
+    let element = document.getElementById(id);
+
+    if(element){
+      element.addEventListener('mouseover', changeCursorToHand);
+      element.addEventListener('mouseout', changeCursorToDefault);
+    }
+    else {
+        changeCursorToDefault();
+    }
+});
+$(document).ready(function(){
+                $('#phoneNumber').mask('(000) 000-0000');
+            });
+</script>
+</head>
+</body>
+</html>
